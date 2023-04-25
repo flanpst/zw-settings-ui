@@ -1,0 +1,175 @@
+<nz-card>
+  <form [formGroup]="form" (ngSubmit)="onSubmit()" nz-form [nzLayout]="'vertical'" class="form-cards">
+      <div nz-row [nzGutter]="24">
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+              <nz-card>
+                  <h4>Logotipos</h4>
+                  <br>
+                  <nz-input-group [nzSize]="'large'">
+                      <div nz-row [nzGutter]="8">
+                          <div nz-col nzSpan="12">
+                              <nz-upload [nzHeaders]="setMediaUploadHeaders" formControlName="logo_top" class="avatar-uploader"
+                              [(nzAction)]="UPLOAD_FILE" nzName="logo_top"
+                                  nzListType="picture-card" [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload"
+                                  (nzChange)="getFileUrlLogoTop($event)">
+                                  <ng-container *ngIf="!logoTopUrl">
+                                      <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+                                      <div class="ant-upload-text">Topo</div>
+                                  </ng-container>
+                                  <img *ngIf="logoTopUrl" [src]="logoTopUrl" style="width: 100%" />
+                              </nz-upload>
+                              <p>A imagem deve ter a dimensão exata de 308x77 pixels</p>
+                          </div>
+                          <div nz-col nzSpan="12">
+                              <nz-upload [nzHeaders]="setMediaUploadHeaders" formControlName="logo_footer" class="avatar-uploader"
+                                  [(nzAction)]="UPLOAD_FILE" nzName="logo_footer"
+                                  nzListType="picture-card" [nzShowUploadList]="false" [nzBeforeUpload]="beforeUpload"
+                                  (nzChange)="getFileUrlLogoFooter($event)">
+                                  <ng-container *ngIf="!logoFooterUrl">
+                                      <i class="upload-icon" nz-icon [nzType]="loading ? 'loading' : 'plus'"></i>
+                                      <div class="ant-upload-text">Rodapé</div>
+                                  </ng-container>
+                                  <img *ngIf="logoFooterUrl" [src]="logoFooterUrl" style="width: 100%" />
+                              </nz-upload>
+                              <p>A imagem deve ter a dimensão exata de 200x130 pixels</p>
+                          </div>
+                      </div>
+                  </nz-input-group>
+                  <nz-form-item>
+                      <br>
+                      <nz-form-label>Texto de apresentação do rodapé </nz-form-label>
+                      <nz-form-control>
+                          <textarea formControlName="logo_description" rows="4" nz-input></textarea>
+                      </nz-form-control>
+                  </nz-form-item>
+              </nz-card>
+
+              <nz-card>
+                  <h4>API Suporte Flanp</h4>
+                  <br>
+                  <nz-form-item>
+                      <nz-form-label>Token </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="token" type="text" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                      <nz-form-label>Secret </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="secret" type="password" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <div style="text-align: right">
+                      <button nz-button type="buttom" nzType="primary">Testar Conexão</button>
+                  </div>
+              </nz-card>
+
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+
+              <nz-card>
+                  <h4>Redes Sociais</h4>
+                  <br>
+                  <nz-form-item>
+                      <nz-form-label>Facebook </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="facebook" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                      <nz-form-label>Twitter </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="twitter" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                      <nz-form-label>Instagram </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="instagram" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                      <nz-form-label>Youtube </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="youtube" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                      <nz-form-label>Pinterest </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="pinterest" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+              </nz-card>
+
+              <nz-card>
+                  <h4>Página de contato</h4>
+                  <br>
+                  <nz-form-item>
+                      <nz-form-label>Nosso endereço </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="address" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                      <nz-form-label>Telefone </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="phone" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                      <nz-form-label>E-mail </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="email" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                      <nz-form-label>Horário de atendimento </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="open_time" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                      <nz-form-label>Email que receberá os contatos do formulário </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="admin_mail" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+              </nz-card>
+
+          </div>
+      </div>
+      <div nz-row [nzGutter]="24">
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+
+
+          </div>
+          <div nz-col nzXs="24" nzSm="24" nzMd="24" nzLg="12" nzXl="12">
+
+              <nz-card>
+                  <h4>Whatsapp</h4>
+                  <br>
+                  <nz-form-item>
+                      <nz-form-label>Nº do Whatsapp </nz-form-label>
+                      <nz-form-control>
+                          <input formControlName="whatsapp" mask="(00) 0000-0000 || (00) 0 0000-0000" nz-input placeholder="" />
+                      </nz-form-control>
+                  </nz-form-item>
+                  <nz-form-item>
+                      <nz-form-label>Ativar botão flutuante do Whatsapp </nz-form-label>
+                      <nz-switch formControlName="active_whatsapp"></nz-switch>
+                  </nz-form-item>
+              </nz-card>
+          </div>
+          <div nz-col [nzSpan]="24">
+
+              <div nz-row style="float: right">
+                  <button nz-button nzType="primary" right style="float:right; margin-left: 5px" type="submit">
+                      Salvar
+                  </button>
+
+              </div>
+          </div>
+      </div>
+  </form>
+</nz-card>
