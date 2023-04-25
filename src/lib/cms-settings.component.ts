@@ -4,7 +4,6 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer, first } from 'rxjs';
 import { CmsSettingsService } from './cms-settings.service';
-import { AuthenticationService } from 'src/app/authentication/services/authentication.service';
 
 @Component({
   selector: 'zwcms-cms-settings',

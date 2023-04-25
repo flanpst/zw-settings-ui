@@ -11,10 +11,12 @@ import { NzInputModule } from 'ng-zorro-antd/input';
 import { NzSelectModule } from 'ng-zorro-antd/select';
 import { NzMessageModule } from 'ng-zorro-antd/message';
 import { CommonModule, LocationStrategy, PathLocationStrategy } from '@angular/common';
-import { SharedModule } from 'src/app/shared/shared.module';
 import { NZ_I18N, pt_BR } from 'ng-zorro-antd/i18n';
 import { SettingsRoutingModule } from './settings-routing.module';
 import { CmsSettingsService } from './cms-settings.service';
+import { ReactiveFormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
+import { NzIconModule } from 'ng-zorro-antd/icon';
 
 
 const antdModule = [
@@ -35,7 +37,10 @@ const antdModule = [
   ],
   imports: [
     CommonModule,
-    SharedModule,
+    CommonModule,
+    ReactiveFormsModule,
+    HttpClientModule,
+    NzIconModule,
     ...antdModule,
     SettingsRoutingModule
   ],
