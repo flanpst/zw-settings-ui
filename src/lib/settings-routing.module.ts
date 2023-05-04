@@ -4,7 +4,7 @@ import { CmsSettingsComponent } from './cms-settings.component';
 
 const routes: Routes = [
   {
-    path: 'settings', component: CmsSettingsComponent
+    path: 'configuracoes', component: CmsSettingsComponent
   }
 ];
 

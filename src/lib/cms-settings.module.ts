@@ -1,5 +1,4 @@
 import { LOCALE_ID, ModuleWithProviders, NgModule } from '@angular/core';
-import { CmsSettingsComponent } from './cms-settings.component';
 
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -17,6 +16,7 @@ import { CmsSettingsService } from './cms-settings.service';
 import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NzIconModule } from 'ng-zorro-antd/icon';
+import { CmsSettingsComponent } from './cms-settings.component';
 
 
 const antdModule = [
@@ -78,6 +78,6 @@ export class CmsSettingsModule {
             }
         ]
     };
-}
+  }
 }
 
