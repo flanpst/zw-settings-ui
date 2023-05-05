@@ -4,6 +4,7 @@ import { NzMessageService } from 'ng-zorro-antd/message';
 import { NzUploadFile } from 'ng-zorro-antd/upload';
 import { Observable, Observer, first } from 'rxjs';
 import { CmsSettingsService } from './cms-settings.service';
+import { ENVIRONMENT } from './cms-settings.module';
 
 @Component({
   selector: 'zwcms-cms-settings',
@@ -24,7 +25,7 @@ export class CmsSettingsComponent implements OnInit {
   logoFooterDestaque: string;
 
   constructor(
-    @Inject('env') protected environment,
+    @Inject(ENVIRONMENT) protected environment,
     private msg: NzMessageService,
     private formBuilder: FormBuilder,
     private service: CmsSettingsService

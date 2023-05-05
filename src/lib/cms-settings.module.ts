@@ -1,4 +1,4 @@
-import { LOCALE_ID, ModuleWithProviders, NgModule } from '@angular/core';
+import { InjectionToken, LOCALE_ID, ModuleWithProviders, NgModule } from '@angular/core';
 
 import { NzCardModule } from 'ng-zorro-antd/card';
 import { NzButtonModule } from 'ng-zorro-antd/button';
@@ -17,7 +17,9 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { NzIconModule } from 'ng-zorro-antd/icon';
 import { CmsSettingsComponent } from './cms-settings.component';
+import { env } from './cms-settings-configuration';
 
+export const ENVIRONMENT = new InjectionToken<env>('env');
 
 const antdModule = [
   NzCardModule,
@@ -37,12 +39,11 @@ const antdModule = [
   ],
   imports: [
     CommonModule,
-    CommonModule,
     ReactiveFormsModule,
     HttpClientModule,
     NzIconModule,
+    SettingsRoutingModule,
     ...antdModule,
-    SettingsRoutingModule
   ],
   exports: [
     CmsSettingsComponent
@@ -66,14 +67,14 @@ const antdModule = [
 
 export class CmsSettingsModule {
 
-  static forRoot(environment): ModuleWithProviders<any> {
+  static forRoot(environment?: env): ModuleWithProviders<CmsSettingsModule> {
 
     return {
         ngModule: CmsSettingsModule,
         providers: [
-            CmsSettingsService,
+          CmsSettingsService,
             {
-                provide: 'env', // you can also use InjectionToken
+                provide: ENVIRONMENT, // you can also use InjectionToken
                 useValue: environment
             }
         ]

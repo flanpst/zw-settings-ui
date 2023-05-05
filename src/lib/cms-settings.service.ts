@@ -3,6 +3,7 @@ import { Settings } from './class/settings';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
 import { CrudService } from './abstract/crud.service';
+import { ENVIRONMENT } from './cms-settings.module';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,7 @@ import { CrudService } from './abstract/crud.service';
 export class CmsSettingsService extends CrudService<Settings, number>{
 
   constructor(
-    @Inject('env') protected environment,
+    @Inject(ENVIRONMENT) protected environment,
     protected _http: HttpClient
 
   ) {
