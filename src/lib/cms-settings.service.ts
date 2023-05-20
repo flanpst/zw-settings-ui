@@ -1,7 +1,7 @@
 import { Inject, Injectable } from '@angular/core';
 import { Settings } from './class/settings';
 import { Observable } from 'rxjs';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { CrudService } from './abstract/crud.service';
 import { ENVIRONMENT } from './cms-settings.module';
 
@@ -23,6 +23,10 @@ export class CmsSettingsService extends CrudService<Settings, number>{
   }
 
   updateConfig(t: Settings): Observable<Settings>{
-    return this._http.post<Settings>(`${this.environment.server_url}` + this.getResourceUrl() + '/', t, {});
+    const headers = new HttpHeaders({
+      'Content-Type': 'application/json',
+      'Authorization': 'Bearer ' + localStorage.getItem('token')
+    })
+    return this._http.post<Settings>(`${this.environment.server_url}` + this.getResourceUrl() + '/', t, {headers: headers});
   }
 }
